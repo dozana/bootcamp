@@ -38,6 +38,7 @@ html {
 }
 
 body {
+  background: $color-black;
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden !important;
   line-height: 1.6;
@@ -57,12 +58,8 @@ h1, h2, h3, h4, h5, h6 {
 /*-------------------------------------------*\
   Miscellaneous
 \*-------------------------------------------*/
-.bg-stars {
+.stars {
   background: $color-black url("../img/stars.png") repeat fixed center;
-}
-
-.bg-black {
-  background: $color-black;
 }
 
 section {
@@ -126,10 +123,30 @@ section {
 }
 
 
+
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "content";
+}
+
+
+
+
 /*-------------------------------------------*\
-  Landing Page
+  Section: Landing
 \*-------------------------------------------*/
-.landing-page {
+.landing {
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
@@ -149,16 +166,13 @@ section {
   }
 }
 
+
 /*-------------------------------------------*\
-  Questionnaire Page
+  Section: Questionnaire
 \*-------------------------------------------*/
-.questionnaire-page {
-  height: 100vh;
+.questionnaire {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
 
   h1 {
     font-size: 4rem;
@@ -354,6 +368,40 @@ section {
   }
 }
 
+
+/*-------------------------------------------*\
+  Section: Submit
+\*-------------------------------------------*/
+.submit {
+  padding: 5rem;
+
+  grid-area: content;
+  align-self: center;
+  justify-self: center;
+}
+
+
+/*-------------------------------------------*\
+  Section: Thank you
+\*-------------------------------------------*/
+.thank-you {
+  padding: 5rem;
+
+  grid-area: content;
+  justify-self: center;
+  align-self: center;
+}
+
+
+/*-------------------------------------------*\
+  Section: Submitted
+\*-------------------------------------------*/
+.submitted {
+  padding: 5rem;
+
+  grid-area: content;
+  justify-self: center;
+}
 
 
 @import 'utilities';
