@@ -109,6 +109,18 @@ section {
   cursor: pointer;
 }
 
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
 
 /*-------------------------------------------*\
   Landing Page
@@ -216,6 +228,51 @@ section {
         color: red;
         font-size: 13px;
         margin-bottom: 10px;
+      }
+
+      .dropdown {
+        background-image: url("../img/check.png");
+        background-position: calc(100% - 20px) 20px,100% 0;
+        background-size:13px;
+        background-repeat: no-repeat;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+
+      .btn-add {
+        display: inline-block;
+        margin-bottom: 3.5rem;
+        background: $color-red-berry;
+        font-size: 12px;
+        padding: .8rem 3rem;
+        cursor: pointer;
+        border-radius: 0;
+        color: $color-white;
+      }
+
+      .btn-add:hover {
+        background: $color-black;
+        color: $color-white;
+      }
+
+      /*-------------------------------------------*\
+        Skills output table
+      \*-------------------------------------------*/
+      .skills-table {
+        border: 1px solid $color-gray;
+        margin: auto;
+        width: 350px;
+      }
+
+      .skills-table td {
+        padding: 0.625rem;
+        font-style: italic;
+        font-size: 14px;
+      }
+
+      .fa-times-circle-o {
+        color: $color-red-berry;
+        cursor: pointer;
       }
 
   }
