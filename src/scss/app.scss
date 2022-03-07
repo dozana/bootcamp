@@ -121,6 +121,10 @@ section {
   text-align: center;
 }
 
+.mb-6 {
+  margin-bottom: 6rem;
+}
+
 
 /*-------------------------------------------*\
   Landing Page
@@ -175,6 +179,7 @@ section {
 
       article p {
         margin-bottom: 2rem;
+        font-size: 18px;
       }
 
       /*-------------------------------------------*\
@@ -273,6 +278,27 @@ section {
       .fa-times-circle-o {
         color: $color-red-berry;
         cursor: pointer;
+      }
+
+      /*-------------------------------------------*\
+        Radio buttons
+      \*-------------------------------------------*/
+      .radio-buttons {
+        display: block;
+        margin-bottom: 6rem;
+      }
+
+      .radio-buttons .field {
+        /*background: #ccc;*/
+      }
+
+      .radio-buttons input[type="radio"]  {
+        width: 20px;
+      }
+
+      .radio-buttons label {
+        display: inline-block;
+        padding: 0;
       }
 
   }
