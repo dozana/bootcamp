@@ -12,13 +12,13 @@
 
 <main class="questionnaire-page">
     <section class="side-left">
-        <article class="tab">
+        <article class="tab active">
             <form class="form">
                 <h1>Hey, Rocketeer, what are your coordinates?</h1>
                 <div class="tab-content">
-                    <div class="field">
+                    <div class="field error">
                         <input type="text" id="first_name" placeholder="First name" maxlength="25">
-                        <span></span>
+                        <span>This field must be minimum two character</span>
                     </div>
                     <div class="field">
                         <input type="text" id="last_name" placeholder="Last name" maxlength="25">
@@ -133,7 +133,7 @@
                 </div>
             </form>
         </article>
-        <article class="tab active">
+        <article class="tab">
             <form class="form">
                 <h1>What about you?</h1>
                 <div class="tab-content">
@@ -166,9 +166,29 @@
                 </div>
             </form>
         </article>
+        <ul id="steps">
+            <li class="item-step prev" title="prev">
+                <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>
+            </li>
+            <li data-index="1" class="item-step step step1 active">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+            </li>
+            <li data-index="2" class="item-step step step2">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+            </li>
+            <li data-index="3" class="item-step step step3">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+            </li>
+            <li data-index="4" class="item-step step step4">
+                <i class="fa fa-circle" aria-hidden="true"></i>
+            </li>
+            <li class="item-step next" title="next">
+                <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+            </li>
+        </ul>
     </section>
     <section class="side-right">
-        <article class="content">
+        <article class="content active">
             <h1>Redberry Origins</h1>
             <p>You watch “What? Where? When?” Yeah. Our founders used to play it. That’s where they got a question about a famous American author and screenwriter Ray Bradbury. Albeit, our CEO Gaga Darsalia forgot the exact name and he answered Ray Redberry. And at that moment, a name for a yet to be born company was inspired - Redberry 😇</p>
         </article>
@@ -180,7 +200,7 @@
             <h1>Redberry Covid Policies</h1>
             <p>As this infamous pandemic took over the world, we adjusted our working practices so that our employees can be as safe and comfortable as possible. We have a hybrid work environment, so you can either work from home or visit our lovely office on Sairme Street. If it was up to us, we would love you to see us in the office because we think face-to-face communications &gt; Zoom meetings. Both on the fun and productivity scales.</p>
         </article>
-        <article class="content active">
+        <article class="content">
             <h1>Redberrian Insights</h1>
             <p>We were soo much fun before the pandemic started! Parties almost every weekend and lavish employee birthday celebrations! Unfortunately, covid ruined that fun like it did almost everything else in the world. But we try our best to zhuzh it up a bit. For example, we host biweekly Devtalks where our senior and lead developers talk about topics they are passionate about. Previous topics have included Web3, NFT, Laravel 9, Kubernetes, etc. We hold these talks in the office but you can join our Zoom broadcast as well. Feel free to join either as an attendee or a speaker!</p>
         </article>

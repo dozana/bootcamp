@@ -301,6 +301,33 @@ section {
         padding: 0;
       }
 
+      /*-------------------------------------------*\
+        Steps
+      \*-------------------------------------------*/
+      #steps {
+        font-size: 19px;
+        width: 150px;
+        margin: 10px auto;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      #steps li.item-step {
+        padding: 5px;
+        color: #ccc;
+        cursor: pointer;
+      }
+
+      #steps li.active {
+        color: #FE3B1F;
+      }
+
+      #steps li.prev,
+      #steps li.next {
+        color: #FE3B1F;
+      }
+
   }
 
   .side-right {
