@@ -53,9 +53,6 @@ h1, h2, h3, h4, h5, h6 {
   color: $color-red;
 }
 
-p {
-  line-height: 1.6;
-}
 
 /*-------------------------------------------*\
   Miscellaneous
@@ -116,7 +113,7 @@ section {
 /*-------------------------------------------*\
   Landing Page
 \*-------------------------------------------*/
-#landing-page {
+.landing-page {
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
@@ -135,6 +132,77 @@ section {
     margin: auto;
   }
 }
+
+/*-------------------------------------------*\
+  Questionnaire Page
+\*-------------------------------------------*/
+.questionnaire-page {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  .side-left {
+    grid-area: 1 / 1 / 2 / 2;
+    background: $color-white;
+
+      article h1 {
+        margin-bottom: 12rem;
+        text-align: center;
+        color: $color-red-berry;
+      }
+
+      article p {
+        margin-bottom: 2rem;
+      }
+
+      .tab {
+        margin: 0 auto 5rem auto;
+        width: 100%;
+        display: none;
+      }
+
+      .tab.active {
+        display: block;
+      }
+
+      .tab-content {
+        margin: 0 auto 5rem auto;
+        width: 75%;
+      }
+  }
+
+  .side-right {
+    grid-area: 1 / 2 / 2 / 3;
+    background: $color-black;
+    color: $color-white;
+
+      .content {
+        display: none;
+      }
+
+      .content.active {
+        display: block;
+      }
+
+      article p {
+        margin: 12rem 0;
+        font-size: 1.5rem;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 3rem;
+        letter-spacing: 0.2rem;
+      }
+  }
+}
+
+
 
 @import 'utilities';
 @import 'buttons';
