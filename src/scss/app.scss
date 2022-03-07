@@ -152,6 +152,9 @@ section {
     grid-area: 1 / 1 / 2 / 2;
     background: $color-white;
 
+      /*-------------------------------------------*\
+        Content
+      \*-------------------------------------------*/
       article h1 {
         margin-bottom: 12rem;
         text-align: center;
@@ -162,6 +165,9 @@ section {
         margin-bottom: 2rem;
       }
 
+      /*-------------------------------------------*\
+        Tabs
+      \*-------------------------------------------*/
       .tab {
         margin: 0 auto 5rem auto;
         width: 100%;
@@ -172,10 +178,46 @@ section {
         display: block;
       }
 
+      /*-------------------------------------------*\
+        Web form
+      \*-------------------------------------------*/
       .tab-content {
         margin: 0 auto 5rem auto;
         width: 75%;
       }
+
+      .field label {
+        display: block;
+        padding: 20px;
+        font-size: 18px;
+        color: #666;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        margin-bottom: 1.5rem;
+        width: 100%;
+        padding: 1.588rem;
+        border: 1px solid $color-gray;
+        color: $color-dark-gray;
+        border-radius: 0;
+        font-size: 14px;
+      }
+
+      .field.error input,
+      .field.error select,
+      .field.error textarea {
+        border: 1px solid $color-red-berry;
+      }
+
+      span {
+        display: block;
+        color: red;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+
   }
 
   .side-right {
