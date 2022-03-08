@@ -173,14 +173,14 @@ const fillData = () => {
         }
 
         if(element.id === 'email') {
-            if(!element.value) {
+            if(!isEmail(element.value)) {
                 errors[element.id] = 'Email is not correct';
             }
         }
 
         if(element.id === 'phone') {
             if(element.value.length > 0) {
-                if(!element.value) {
+                if(!isPhone(element.value)) {
                     errors[element.id] = 'Phone is not correct';
                 }
             }
@@ -261,3 +261,24 @@ const resetErrors = () => {
         field.classList.remove('error');
     });
 }
+
+
+// additional validation rules
+const email = document.getElementById('email');
+const phone = document.getElementById('phone');
+
+function isEmail(email) {
+    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+}
+
+function isPhone(str) {
+    const regexPhoneNumber = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im; // +995593123456
+
+    if (str.match(regexPhoneNumber)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
