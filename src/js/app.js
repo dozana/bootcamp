@@ -7,25 +7,29 @@ const stepsLength = steps.length;
 let currentStep = 1;
 
 nextStep.addEventListener('click', function() {
-    currentStep++;
+    if(fillData()) {
+        currentStep++;
 
-    if (currentStep > stepsLength) {
-        currentStep = stepsLength;
+        if (currentStep > stepsLength) {
+            currentStep = stepsLength;
+        }
+
+        updateSteps();
     }
-
-    updateSteps();
 });
 
 prevStep.addEventListener('click', function()  {
-    currentStep--;
+    if(fillData()) {
+        currentStep--;
 
-    if (currentStep < 1) {
-        currentStep = 1;
+        if (currentStep < 1) {
+            currentStep = 1;
 
-        return false;
+            return false;
+        }
+
+        updateSteps();
     }
-
-    updateSteps();
 });
 
 function updateSteps () {
@@ -84,16 +88,26 @@ document.querySelector('.add-programming-language').addEventListener('click', fu
 
     const experience = Number(document.querySelector('#years').value);
     if(!experience) {
+        drawErrors();
         return false;
     }
 
-    selectedSkills.push({
-        id: skillId,
-        experience
-    });
+    // add only unique skill
+    const found = selectedSkills.find(selected => selected.id === skillId);
 
-    document.querySelector('#years').value = '';
-    drawRecords();
+    if(!found) {
+        selectedSkills.push({
+            id: skillId,
+            experience
+        });
+
+        document.querySelector('#years').value = '';
+        drawRecords();
+    } else {
+        console.log('This skill is already added');
+        drawErrors();
+    }
+
 });
 
 function drawRecords() {
@@ -138,4 +152,63 @@ function drawRecords() {
 function deleteRecord(id) {
     selectedSkills = selectedSkills.filter(selected => selected.id !== id);
     drawRecords();
+}
+
+
+
+// input field validation and targeting if empty
+const forms = document.querySelectorAll('.form');
+
+const fillData = () => {
+    const form = forms[currentStep - 1];
+    resetErrors();
+    const elements = form.elements;
+
+    for(let element of elements) {
+        if(element.id === 'first_name' || element.id === 'last_name') {
+            if(element.value.length < 2 ) {
+                errors[element.id] = 'This field must be minimum two character';
+            }
+        }
+    }
+
+    if(Object.keys(errors).length) {
+        drawErrors();
+        return false;
+    }
+
+    return true;
+}
+
+
+// draw, set and reset errors
+let errors = {};
+
+const drawErrors = () => {
+    Object.keys(errors).forEach(key => {
+        const error = errors[key];
+        setErrorFor(key, error);
+    })
+}
+
+function setErrorFor(id, message) {
+    const input = document.querySelector(`#${id}`)
+    const field = input.parentElement; // .field
+
+    let span = field.querySelector('span');
+    if(!span) {
+        span = field.parentElement.querySelector('span')
+    }
+
+    span.innerText = message; // add error message inside span
+
+    field.className = 'field error'; // add error class
+}
+
+const resetErrors = () => {
+    errors = [];
+    document.querySelectorAll('form span').forEach(span => span.innerHTML = '');
+    document.querySelectorAll('form .field').forEach(field => {
+        field.classList.remove('error');
+    });
 }
