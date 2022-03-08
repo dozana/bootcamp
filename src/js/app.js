@@ -11,7 +11,13 @@ nextStep.addEventListener('click', async function() {
         currentStep++;
 
         if (currentStep > stepsLength) {
-            currentStep = stepsLength;
+            try {
+                await sendApplication();
+            } catch (e) {
+                console.log('error', e);
+            }
+
+            // currentStep = stepsLength;
         }
 
         updateSteps();
@@ -180,12 +186,16 @@ const fillData = () => {
         if(element.id === 'first_name' || element.id === 'last_name') {
             if(element.value.length < 2 ) {
                 errors[element.id] = 'This field must be minimum two character';
+            } else {
+                data[element.id] = element.value;
             }
         }
 
         if(element.id === 'email') {
             if(!isEmail(element.value)) {
                 errors[element.id] = 'Email is not correct';
+            } else {
+                data[element.id] = element.value;
             }
         }
 
@@ -193,6 +203,8 @@ const fillData = () => {
             if(element.value.length > 0) {
                 if(!isPhone(element.value)) {
                     errors[element.id] = 'Phone is not correct';
+                } else {
+                    data[element.id] = element.value;
                 }
             }
         }
@@ -200,6 +212,8 @@ const fillData = () => {
         if(element.id === 'skills') {
             if(!selectedSkills.length) {
                 errors[element.id] = 'Select skill';
+            } else {
+                data[element.id] = selectedSkills;
             }
         }
 
@@ -216,18 +230,24 @@ const fillData = () => {
                 } else if(value.toLowerCase() === 'false') {
                     value = false;
                 }
+
+                data[element.name] = value;
             }
         }
 
         if(element.id === 'vaccinated_when' || element.id === 'devtalk_topic' || element.id === 'something_special') {
             if(!element.value.length) {
                 errors[element.id] = 'This field is required';
+            } else {
+                data[element.id] = element.value;
             }
         }
 
         if(element.type === 'date') {
             if(!element.value.length) {
                 errors[element.id] = 'This field is required';
+            } else {
+                data[element.id] = element.value;
             }
         }
     }
@@ -290,4 +310,18 @@ function isPhone(str) {
     } else {
         return false;
     }
+}
+
+
+// send application data
+const data = { token: '2efa049a-ed33-4bde-b469-e8a685dafd47' };
+
+async function sendApplication() {
+    return fetch('https://bootcamp-2022.devtest.ge/api/application', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
 }
