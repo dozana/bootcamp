@@ -111,6 +111,12 @@ function drawRecords() {
         link.className = 'delete-record';
         link.innerHTML = '<i class="fa fa-times-circle-o " aria-hidden="true"></i>';
 
+        // delete record
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            deleteRecord(item.id);
+        });
+
         const text1 = document.createTextNode(skill.title);
         const text2 = document.createTextNode(`years of experience: ${item.experience}`);
         const text3 = link;
@@ -125,4 +131,11 @@ function drawRecords() {
 
         viewRecords.appendChild(tr);
     });
+}
+
+
+// Delete skills and experience duration record
+function deleteRecord(id) {
+    selectedSkills = selectedSkills.filter(selected => selected.id !== id);
+    drawRecords();
 }
