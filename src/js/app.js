@@ -80,7 +80,7 @@ const viewRecords = document.querySelector('.skills-table');
 
 document.querySelector('.add-programming-language').addEventListener('click', function(e) {
     e.preventDefault();
-
+    resetErrors();
     const skillId = Number(document.querySelector('#skills').value);
     if(!skillId) {
         return false;
@@ -88,6 +88,7 @@ document.querySelector('.add-programming-language').addEventListener('click', fu
 
     const experience = Number(document.querySelector('#years').value);
     if(!experience) {
+        errors['years'] = 'Experience is required';
         drawErrors();
         return false;
     }
@@ -104,7 +105,7 @@ document.querySelector('.add-programming-language').addEventListener('click', fu
         document.querySelector('#years').value = '';
         drawRecords();
     } else {
-        console.log('This skill is already added');
+        errors['skills'] = 'This skill is already added';
         drawErrors();
     }
 
@@ -155,7 +156,6 @@ function deleteRecord(id) {
 }
 
 
-
 // input field validation and targeting if empty
 const forms = document.querySelectorAll('.form');
 
@@ -163,11 +163,60 @@ const fillData = () => {
     const form = forms[currentStep - 1];
     resetErrors();
     const elements = form.elements;
+    let prevRadioBtnName = '';
 
     for(let element of elements) {
         if(element.id === 'first_name' || element.id === 'last_name') {
             if(element.value.length < 2 ) {
                 errors[element.id] = 'This field must be minimum two character';
+            }
+        }
+
+        if(element.id === 'email') {
+            if(!element.value) {
+                errors[element.id] = 'Email is not correct';
+            }
+        }
+
+        if(element.id === 'phone') {
+            if(element.value.length > 0) {
+                if(!element.value) {
+                    errors[element.id] = 'Phone is not correct';
+                }
+            }
+        }
+
+        if(element.id === 'skills') {
+            if(!selectedSkills.length) {
+                errors[element.id] = 'Select skill';
+            }
+        }
+
+        if(element.type === 'radio' && element.name !== prevRadioBtnName) {
+            prevRadioBtnName = element.name;
+            const checked = document.querySelector(`input[type="radio"][name=${element.name}]:checked`);
+            if(!checked) {
+                errors[element.id] = "This field is required";
+            } else {
+                let value = checked.value;
+
+                if(value.toLowerCase() === 'true') {
+                    value = true;
+                } else if(value.toLowerCase() === 'false') {
+                    value = false;
+                }
+            }
+        }
+
+        if(element.id === 'vaccinated_when' || element.id === 'devtalk_topic' || element.id === 'something_special') {
+            if(!element.value.length) {
+                errors[element.id] = 'This field is required';
+            }
+        }
+
+        if(element.type === 'date') {
+            if(!element.value.length) {
+                errors[element.id] = 'This field is required';
             }
         }
     }
