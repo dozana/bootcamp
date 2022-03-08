@@ -6,7 +6,7 @@ const nextStep = document.querySelector('.next');
 const stepsLength = steps.length;
 let currentStep = 1;
 
-nextStep.addEventListener('click', function() {
+nextStep.addEventListener('click', async function() {
     if(fillData()) {
         currentStep++;
 
@@ -43,6 +43,17 @@ function updateSteps () {
         });
     }
 }
+
+
+// Show per form on click circle
+steps.forEach(step => {
+    step.addEventListener('click', function() {
+        const { index } = this.dataset;
+        currentStep = Number(index);
+
+        updateSteps();
+    });
+});
 
 
 // get skills from api
@@ -263,7 +274,7 @@ const resetErrors = () => {
 }
 
 
-// additional validation rules
+// rules for email and phone input fields
 const email = document.getElementById('email');
 const phone = document.getElementById('phone');
 
@@ -280,5 +291,3 @@ function isPhone(str) {
         return false;
     }
 }
-
-
