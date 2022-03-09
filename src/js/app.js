@@ -364,3 +364,24 @@ btnSubmittedApplication.addEventListener('click', function() {
     document.querySelector('.page1').classList.remove('active');
     document.querySelector('.page5').classList.add('active');
 });
+
+
+// get application data
+const api_url = `https://bootcamp-2022.devtest.ge/api/applications?token=${data.token}`;
+
+async function applications() {
+    const response = await fetch(api_url);
+    const records = await response.json();
+
+    records.forEach(record => {
+        document.querySelector(".first_name").innerHTML = record.first_name;
+        document.querySelector(".last_name").innerHTML = record.last_name;
+        document.querySelector(".email").innerHTML = record.email;
+        document.querySelector(".phone").innerHTML = record.phone;
+        document.querySelector(".devtalk_topic").innerHTML = record.devtalk_topic;
+        document.querySelector(".something_special").innerHTML = record.something_special;
+        console.log(record);
+    });
+}
+
+applications();

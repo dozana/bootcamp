@@ -106,6 +106,7 @@ section {
   cursor: pointer;
 }
 
+
 .float-left {
   float: left;
 }
@@ -378,6 +379,27 @@ section {
   grid-area: content;
   align-self: center;
   justify-self: center;
+
+
+  .btn {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+
+    background: #FE3B1F;
+    padding: 20px 50px;
+    text-decoration: none;
+    text-transform: capitalize;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .btn-outline {
+    background: transparent;
+    white-space: nowrap;
+  }
 }
 
 
@@ -405,17 +427,100 @@ section {
   Section: Submitted
 \*-------------------------------------------*/
 .submitted {
-  padding: 5rem;
+  padding: 5rem 20%;
+  font-size: 16px;
 
   grid-area: content;
-  //justify-self: center;
 
   h1 {
     text-align: center;
-    font-size: 64px;
+    font-size: 56px;
     white-space: nowrap;
+
     color: $color-white;
+    margin-bottom: 56px;
   }
+
+  section {
+    padding: 0 5%;
+    background: #fff;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  .col {
+    flex: 1;
+  }
+
+
+  .left {
+    float: left;
+    width: 50%;
+  }
+
+  .right {
+    float: left;
+    width: 50%;
+  }
+
+  .left, .right {
+    padding: 5rem;
+  }
+
+
+  /*-------------------------------------------*\
+    Web form
+  \*-------------------------------------------*/
+  .tab-content {
+    //margin: 0 auto 5rem auto;
+    width: 75%;
+  }
+
+  .field label {
+    display: block;
+    padding: 20px;
+    font-size: 18px;
+    color: #666;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    padding: 1.588rem;
+    border: 1px solid $color-gray;
+    color: $color-dark-gray;
+    border-radius: 0;
+    font-size: 14px;
+  }
+
+  .field.error input,
+  .field.error select,
+  .field.error textarea {
+    border: 1px solid $color-red-berry;
+  }
+
+
+  /*-------------------------------------------*\
+    Radio buttons
+  \*-------------------------------------------*/
+  .radio-buttons {
+    display: block;
+    margin-bottom: 6rem;
+  }
+
+  .radio-buttons input[type="radio"]  {
+    width: 20px;
+  }
+
+  .radio-buttons label {
+    display: inline-block;
+    padding: 0;
+  }
+
 }
 
 

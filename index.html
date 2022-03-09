@@ -163,7 +163,6 @@
                             <textarea id="something_special" rows="3" placeholder="I..."></textarea>
                             <span></span>
                         </div>
-
                     </div>
                 </form>
             </article>
@@ -213,8 +212,9 @@
 <div class="pages page3">
     <main class="submit">
         <section class="submit-content">
-            <a href="javascript:void(0)" class="btn-3">Submit</a>
-            <button onclick="history.back()">Go Back</button>
+            <a href="javascript:void(0)" class="btn">Submit</a>
+            <br><br>
+            <button onclick="history.back()" class="btn btn-outline">Go Back</button>
         </section>
     </main>
 </div>
@@ -231,8 +231,127 @@
 <!-- page5: submit-content -->
 <div class="pages page5 active">
     <main class="submitted">
-        <section class="submit-content">
-            <h1>Submitted Application</h1>
+        <h1>Submitted Application</h1>
+        <section>
+            <div class="left">
+                <h3 style="margin-bottom: 44px;">Personal Information</h3>
+                <div style="margin-bottom: 85px;">
+                    <div class="row mb-3">
+                        <div class="col">First Name:</div>
+                        <div class="col"><span class="first_name"></span></div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">Last Name: </div>
+                        <div class="col"><span class="last_name"></span></div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">E Mail: </div>
+                        <div class="col"><span class="email"></span></div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">Phone: </div>
+                        <div class="col"><span class="phone"></span></div>
+                    </div>
+                </div>
+
+                <h3 style="margin-bottom: 19px;">Covid Situation</h3>
+                <div class="tab-content">
+                    <p>How would you prefer to work?</p>
+                    <div class="radio-buttons">
+
+                        <div class="field">
+                            <input type="radio" name="work_preference" id="from_office" value="from_office">
+                            <label for="from_office">From Sairme office</label>
+                        </div>
+                        <div class="field">
+                            <input type="radio" name="work_preference" id="from_home" value="from_home">
+                            <label for="from_home">From Home</label>
+                        </div>
+                        <div class="field">
+                            <input type="radio" name="work_preference" id="hybrid" name="hybrid">
+                            <label for="hybrid">Hybrid</label>
+                        </div>
+                    </div>
+
+                    <p>Did you have covid 19? :(</p>
+                    <div class="radio-buttons">
+                        <div class="field">
+                            <input type="radio" name="had_covid" id="had_covid_yes" value="true">
+                            <label for="had_covid_yes">Yes</label>
+                        </div>
+                        <div class="field">
+                            <input type="radio" name="had_covid" id="had_covid_no" value="false">
+                            <label for="had_covid_no">No</label>
+                        </div>
+                        <span></span>
+                    </div>
+
+                    <p>When did you have covid 19?</p>
+                    <div class="field mb-6">
+                        <input type="date" class="had_covid_at">
+                    </div>
+
+                    <p>Have you been vaccinated?</p>
+                    <div class="radio-buttons">
+                        <div class="field">
+                            <input type="radio" class="vaccinated_yes">
+                            <label>Yes</label>
+                        </div>
+                        <div class="field">
+                            <input type="radio" class="vaccinated_no">
+                            <label>No</label>
+                        </div>
+                    </div>
+
+                    <p>When did you get your last covid vaccine?</p>
+                    <div class="field">
+                        <input type="date" class="vaccinated_at">
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <h3 style="margin-bottom: 44px;">skillset</h3>
+                <div style="margin-bottom: 85px;">
+                    <div class="row">
+                        <div class="col">PHP</div>
+                        <div class="col">Years of experience: <span class="">3</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">React</div>
+                        <div class="col">Years of experience: <span class="">9</span></div>
+                    </div>
+                </div>
+
+                <h3 style="margin-bottom: 19px;">Insights</h3>
+                <div class="tab-content">
+                    <p>Would you attend Devtalks and maybe also organize your own?</p>
+
+                    <div class="radio-buttons">
+                        <div class="field">
+                            <input type="radio" class="will_organize_devtalk">
+                            <label>Yes</label>
+                        </div>
+                        <div class="field">
+                            <input type="radio" class="will_organize_devtalk">
+                            <label>No</label>
+                        </div>
+                    </div>
+
+                    <p>What would you speak about at Devtalk?</p>
+                    <div class="field">
+                        <textarea class="devtalk_topic" rows="5" placeholder=""></textarea>
+                    </div>
+
+                    <p>Tell us something special?</p>
+                    <div class="field">
+                        <textarea class="something_special" rows="3" placeholder=""></textarea>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both"></div>
         </section>
     </main>
 </div>
