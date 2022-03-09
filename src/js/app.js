@@ -11,13 +11,37 @@ nextStep.addEventListener('click', async function() {
         currentStep++;
 
         if (currentStep > stepsLength) {
-            try {
-                await sendApplication();
-            } catch (e) {
-                console.log('error', e);
-            }
 
-            // currentStep = stepsLength;
+            // open questionnaire
+            document.querySelector('.page2').classList.remove('active'); // hide questionnaire
+            document.querySelector('.page3').classList.add('active'); // show submit page
+
+            // submit questionnaire
+            const submitBtn = document.querySelector('.btn-3');
+
+            submitBtn.addEventListener('click', function() {
+                document.querySelector('.page3').classList.remove('active');
+
+                try {
+                    // send data
+                    sendApplication();
+
+                    // show "thank you", wait 3 sec and redirect
+                    document.querySelector('.page4').classList.add('active');
+
+                    // redirect
+                    function redirect(){
+                        window.location = 'index.html';
+                    }
+                    setTimeout(redirect, 3000);
+
+                } catch (e) {
+                    console.log('error', e);
+                }
+
+                // currentStep = stepsLength;
+            });
+
         }
 
         updateSteps();
@@ -325,3 +349,18 @@ async function sendApplication() {
         body: JSON.stringify(data),
     });
 }
+
+
+// change pages
+const btnStartQuestionnaire = document.querySelector('.btn-1');
+const btnSubmittedApplication = document.querySelector('.btn-2');
+
+btnStartQuestionnaire.addEventListener('click', function() {
+    document.querySelector('.page1').classList.remove('active');
+    document.querySelector('.page2').classList.add('active');
+});
+
+btnSubmittedApplication.addEventListener('click', function() {
+    document.querySelector('.page1').classList.remove('active');
+    document.querySelector('.page5').classList.add('active');
+});

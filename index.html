@@ -10,12 +10,13 @@
 </head>
 <body>
 
-<div class="stars page">
+<!-- page1: Landing -->
+<div class="pages page1 stars">
     <main class="landing">
         <section>
             <h1>Welcome Rocketeer !</h1>
-            <a href="#" class="btn-1">Start Questionnaire</a>
-            <a href="#" class="btn-2">Submitted Applications</a>
+            <a href="javascript:void(0)" class="btn-1">Start Questionnaire</a>
+            <a href="javascript:void(0)" class="btn-2">Submitted Applications</a>
             <div class="welcome-rocketmen">
                 <img src="dist/img/rocket-man.svg" class="d-block" />
             </div>
@@ -23,7 +24,8 @@
     </main>
 </div>
 
-<div class="page active">
+<!-- page2: questionnaire -->
+<div class="pages page2">
     <main class="questionnaire">
         <section class="side-left">
             <article class="tab tab1 active">
@@ -207,24 +209,27 @@
     </main>
 </div>
 
-<div class="page">
+<!-- page3: submit -->
+<div class="pages page3">
     <main class="submit">
         <section class="submit-content">
-            <button>Submit</button>
-            <a href="">Go Back</a>
+            <a href="javascript:void(0)" class="btn-3">Submit</a>
+            <button onclick="history.back()">Go Back</button>
         </section>
     </main>
 </div>
 
-<div class="page">
+<!-- page4: submit-content -->
+<div class="pages page4">
     <main class="thank-you">
         <section class="submit-content">
-            <h1>Thanks for Joining 😊</h1>
+            <h1>Thanks for Joining 😊 <span id="countDown"></span></h1>
         </section>
     </main>
 </div>
 
-<div class="page">
+<!-- page5: submit-content -->
+<div class="pages page5 active">
     <main class="submitted">
         <section class="submit-content">
             <h1>Submitted Application</h1>
