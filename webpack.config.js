@@ -5,7 +5,7 @@ module.exports = {
         __dirname + '/src/js/app.js',
         __dirname + '/src/scss/app.scss'
     ],
-    watch: true,
+    // watch: true,
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/app.min.js',
