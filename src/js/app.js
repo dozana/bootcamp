@@ -6,6 +6,8 @@ const nextStep = document.querySelector('.next');
 const stepsLength = steps.length;
 let currentStep = 1;
 
+const apiUrl = 'https://bootcamp-2022.devtest.ge/api'
+
 nextStep.addEventListener('click', async function() {
     if(fillData()) {
         currentStep++;
@@ -19,27 +21,24 @@ nextStep.addEventListener('click', async function() {
             // submit questionnaire
             const submitBtn = document.querySelector('.btn-3');
 
-            submitBtn.addEventListener('click', function() {
+            submitBtn.addEventListener('click', async function() {
                 document.querySelector('.page3').classList.remove('active');
 
                 try {
                     // send data
-                    sendApplication();
+                    await sendApplication();
 
                     // show "thank you", wait 3 sec and redirect
                     document.querySelector('.page4').classList.add('active');
 
                     // redirect
-                    function redirect(){
+                    setTimeout(() => {
                         window.location = 'index.html';
-                    }
-                    setTimeout(redirect, 3000);
+                    }, 3000);
 
                 } catch (e) {
                     console.log('error', e);
                 }
-
-                // currentStep = stepsLength;
             });
 
         }
@@ -47,6 +46,14 @@ nextStep.addEventListener('click', async function() {
         updateSteps();
     }
 });
+
+document.querySelector('.back-btn').addEventListener('click', function(e) {
+    e.preventDefault()
+    currentStep = 4
+    updateSteps()
+    document.querySelector('.page3').classList.remove('active'); // hide questionnaire
+    document.querySelector('.page2').classList.add('active'); // show submit page
+})
 
 prevStep.addEventListener('click', function()  {
     if(fillData()) {
@@ -85,12 +92,11 @@ steps.forEach(step => {
     });
 });
 
-
-// get skills from api
-let skills = [];
+let skills = []
 
 function getSkills() {
-    let url = 'https://bootcamp-2022.devtest.ge/api/skills';
+    let url = `${apiUrl}/skills`;
+
     return fetch(url);
 }
 
@@ -365,23 +371,89 @@ btnSubmittedApplication.addEventListener('click', function() {
     document.querySelector('.page5').classList.add('active');
 });
 
-
 // get application data
-const api_url = `https://bootcamp-2022.devtest.ge/api/applications?token=${data.token}`;
 
-async function applications() {
-    const response = await fetch(api_url);
-    const records = await response.json();
+async function getApplications() {
+    const fetchApplicationsUrl = `${apiUrl}/applications?token=${data.token}`;
 
-    records.forEach(record => {
-        document.querySelector(".first_name").innerHTML = record.first_name;
-        document.querySelector(".last_name").innerHTML = record.last_name;
-        document.querySelector(".email").innerHTML = record.email;
-        document.querySelector(".phone").innerHTML = record.phone;
-        document.querySelector(".devtalk_topic").innerHTML = record.devtalk_topic;
-        document.querySelector(".something_special").innerHTML = record.something_special;
-        console.log(record);
+    const response = await fetch(fetchApplicationsUrl);
+    const applications = await response.json();
+
+    if(!skills.length) {
+        const skillsResponse = await getSkills()
+        skills = await skillsResponse.json()
+    }
+
+    applications.forEach(application => {
+        document.querySelector('.first_name').textContent = application.first_name;
+        document.querySelector('.last_name').textContent = application.last_name;
+        document.querySelector('.email').textContent = application.email;
+        document.querySelector('.phone').textContent = application.phone;
+
+        // How would you prefer to work?
+        let workPreference = application.work_preference;
+        if (workPreference === 'from_office') {
+            document.querySelector('.from_office').checked = true;
+        } else if (workPreference === 'from_home') {
+            document.querySelector('.from_home').checked = true;
+        } else if (workPreference === 'hybrid') {
+            document.querySelector('.hybrid').checked = true;
+        }
+
+
+        // Did you have covid 19? :(
+        let hadCovid = application.had_covid;
+        if (hadCovid === true) {
+            document.querySelector('.had_covid_yes').checked = true;
+        } else if (hadCovid === false) {
+            document.querySelector('.had_covid_no').checked = true;
+        }
+
+
+        // When did you have covid 19?
+        document.querySelector('.had_covid_at').setAttribute("value", application.had_covid_at);
+
+        // Have you been vaccinated?
+        let vaccinated = application.vaccinated;
+        if (vaccinated === true) {
+            document.querySelector('.vaccinated_yes').checked = true;
+        } else if (vaccinated === false) {
+            document.querySelector('.vaccinated_no').checked = true;
+        }
+
+        // When did you get your last covid vaccine?
+        document.querySelector('.vaccinated_at').setAttribute("value", application.vaccinated_at);
+
+
+        // Skills
+        const { skills: selectedSkills } = application
+
+        let skillsHtml = ''
+        selectedSkills.forEach(selected => {
+            const skill = skills.find(skill => selected.id === skill.id)
+            skillsHtml += `<div class="row">
+                        <div class="col">${skill.title}</div>
+                        <div class="col">Years of experience: <span class="">${selected.experience}</span></div>
+                    </div>`
+        });
+
+        document.querySelector(".skills").innerHTML = skillsHtml
+
+        // Would you attend Devtalks and maybe also organize your own?
+        let willOrganizeDevtalk = application.will_organize_devtalk;
+        if (willOrganizeDevtalk === true) {
+            document.getElementById('will_organize_devtalk_yes').checked = true;
+        } else if (willOrganizeDevtalk === false) {
+            document.getElementById('will_organize_devtalk_no').checked = true;
+        }
+
+        // What would you speak about at Devtalk?
+        document.querySelector('.devtalk_topic').textContent = application.devtalk_topic;
+
+        // Tell us something special?
+        document.querySelector('.something_special').textContent = application.something_special;
+
     });
 }
 
-applications();
+getApplications();

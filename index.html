@@ -212,9 +212,9 @@
 <div class="pages page3">
     <main class="submit">
         <section class="submit-content">
-            <a href="javascript:void(0)" class="btn">Submit</a>
+            <a href="javascript:void(0)" class="btn btn-3">Submit</a>
             <br><br>
-            <button onclick="history.back()" class="btn btn-outline">Go Back</button>
+            <button class="btn btn-outline back-btn">Go Back</button>
         </section>
     </main>
 </div>
@@ -261,32 +261,30 @@
                 <div class="tab-content">
                     <p>How would you prefer to work?</p>
                     <div class="radio-buttons">
-
                         <div class="field">
-                            <input type="radio" name="work_preference" id="from_office" value="from_office">
-                            <label for="from_office">From Sairme office</label>
+                            <input type="radio" name="work_preference" class="from_office">
+                            <label>From Sairme office</label>
                         </div>
                         <div class="field">
-                            <input type="radio" name="work_preference" id="from_home" value="from_home">
-                            <label for="from_home">From Home</label>
+                            <input type="radio" name="work_preference" class="from_home">
+                            <label>From Home</label>
                         </div>
                         <div class="field">
-                            <input type="radio" name="work_preference" id="hybrid" name="hybrid">
-                            <label for="hybrid">Hybrid</label>
+                            <input type="radio" name="work_preference" class="hybrid">
+                            <label>Hybrid</label>
                         </div>
                     </div>
 
                     <p>Did you have covid 19? :(</p>
                     <div class="radio-buttons">
                         <div class="field">
-                            <input type="radio" name="had_covid" id="had_covid_yes" value="true">
-                            <label for="had_covid_yes">Yes</label>
+                            <input type="radio" name="had_covid" class="had_covid_yes">
+                            <label>Yes</label>
                         </div>
                         <div class="field">
-                            <input type="radio" name="had_covid" id="had_covid_no" value="false">
-                            <label for="had_covid_no">No</label>
+                            <input type="radio" name="had_covid" class="had_covid_no">
+                            <label>No</label>
                         </div>
-                        <span></span>
                     </div>
 
                     <p>When did you have covid 19?</p>
@@ -297,11 +295,11 @@
                     <p>Have you been vaccinated?</p>
                     <div class="radio-buttons">
                         <div class="field">
-                            <input type="radio" class="vaccinated_yes">
+                            <input type="radio" name="vaccinated" class="vaccinated_yes">
                             <label>Yes</label>
                         </div>
                         <div class="field">
-                            <input type="radio" class="vaccinated_no">
+                            <input type="radio" name="vaccinated" class="vaccinated_no">
                             <label>No</label>
                         </div>
                     </div>
@@ -314,14 +312,12 @@
             </div>
             <div class="right">
                 <h3 style="margin-bottom: 44px;">skillset</h3>
+                <span class="skills"></span>
+
                 <div style="margin-bottom: 85px;">
                     <div class="row">
                         <div class="col">PHP</div>
                         <div class="col">Years of experience: <span class="">3</span></div>
-                    </div>
-                    <div class="row">
-                        <div class="col">React</div>
-                        <div class="col">Years of experience: <span class="">9</span></div>
                     </div>
                 </div>
 
@@ -331,23 +327,23 @@
 
                     <div class="radio-buttons">
                         <div class="field">
-                            <input type="radio" class="will_organize_devtalk">
+                            <input type="radio" name="will_organize_devtalk" class="will_organize_devtalk_yes">
                             <label>Yes</label>
                         </div>
                         <div class="field">
-                            <input type="radio" class="will_organize_devtalk">
+                            <input type="radio" name="will_organize_devtalk" class="will_organize_devtalk_no">
                             <label>No</label>
                         </div>
                     </div>
 
                     <p>What would you speak about at Devtalk?</p>
                     <div class="field">
-                        <textarea class="devtalk_topic" rows="5" placeholder=""></textarea>
+                        <textarea class="devtalk_topic" rows="5" placeholder="I would..."></textarea>
                     </div>
 
                     <p>Tell us something special?</p>
                     <div class="field">
-                        <textarea class="something_special" rows="3" placeholder=""></textarea>
+                        <textarea class="something_special" rows="3" placeholder="I..."></textarea>
                     </div>
                 </div>
             </div>
