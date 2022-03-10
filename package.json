@@ -7,11 +7,14 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "webpack --config webpack.config.js --mode='production'"
+    "build": "webpack --config webpack.config.js --mode='production'",
+    "start": "serve"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "serve": "^13.0.2"
+  },
   "devDependencies": {
     "file-loader": "^5.1.0",
     "node-sass": "^4.14.1",
